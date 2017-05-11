@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.5
 
 RUN apk update
 RUN apk add python py-pip py-setuptools git ca-certificates
@@ -9,8 +9,8 @@ RUN ln -s /opt/s3cmd/s3cmd /usr/bin/s3cmd
 
 WORKDIR /opt
 
-ADD ./files/s3cfg /opt/.s3cfg
-ADD ./files/main.sh /opt/main.sh
+ADD ./src/s3cfg /opt/.s3cfg
+ADD ./src/main.sh /opt/main.sh
 
 # Main entrypoint script
 RUN chmod 777 /opt/main.sh
