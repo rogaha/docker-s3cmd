@@ -20,15 +20,15 @@ You can find an automated build of this container on the Docker Hub: https://hub
 
 ## Copy from local to S3:
 
-    AWS_KEY=<YOUR AWS KEY>
-    AWS_SECRET=<YOUR AWS SECRET>
+    AWS_ACCESS_KEY_ID=<YOUR AWS KEY>
+    AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET>
     S3_URL=s3://rogaha.public.S3_URL/database2/
     LOCAL_DIR=/tmp/database
 
     docker run \
-    --env aws_key=${AWS_KEY} \
-    --env aws_secret=${AWS_SECRET} \
-    --env cmd=sync-local-to-s3 \
+    --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+    --env CMD=sync-local-to-s3 \
     --env DEST_S3=${S3_URL}  \
     -v ${LOCAL_DIR}:/opt/src \
     rogaha/s3cmd-util
@@ -37,15 +37,15 @@ You can find an automated build of this container on the Docker Hub: https://hub
 
 ## Copy from S3 to local:
 
-    AWS_KEY=<YOUR AWS KEY>
-    AWS_SECRET=<YOUR AWS SECRET>
+    AWS_ACCESS_KEY_ID=<YOUR AWS KEY>
+    AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET>
     S3_URL=s3://bucket_name/tmp
     LOCAL_DIR=/tmp
 
     docker run \
-    --env aws_key=${AWS_KEY} \
-    --env aws_secret=${AWS_SECRET} \
-    --env cmd=sync-s3-to-local \
+    --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+    --env CMD=sync-s3-to-local \
     --env SRC_S3=${S3_URL} \
     -v ${LOCAL_DIR}:/opt/dest \
     rogaha/s3cmd-util
@@ -54,13 +54,13 @@ You can find an automated build of this container on the Docker Hub: https://hub
 
 ## Run interactively with s3cmd
 
-    AWS_KEY=<YOUR AWS KEY>
-    AWS_SECRET=<YOUR AWS SECRET>
+    AWS_ACCESS_KEY_ID=<YOUR AWS KEY>
+    AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET>
 
     docker run -it \
-    --env aws_key=${AWS_KEY} \
-    --env aws_secret=${AWS_SECRET} \
-    --env cmd=interactive \
+    --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+    --env CMD=interactive \
     -v /:/opt/dest \
     rogaha/s3cmd-util /bin/sh
 
